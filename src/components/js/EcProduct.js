@@ -69,6 +69,15 @@ export default {
         : {}
     },
 
+    selectedVariationQuantity () {
+      return (this.selectedVariation.quantity > 0 && this.selectedVariation.quantity < 13) ? this.selectedVariation.quantity : 0
+    },
+
+    almostOutOfStock () {
+      console.log(this.body.quantity)
+      return (this.body.quantity > 0 && this.body.quantity < 16) ? this.body.quantity : 0
+    },
+
     name () {
       return this.selectedVariation.name || name(this.body)
     },
