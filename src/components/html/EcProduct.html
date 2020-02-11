@@ -48,6 +48,7 @@
                 {{ dictionary('discount_of') }} <strong>{{ discount }}%</strong>
               </span>
             </p>
+
           </slot>
 
           <slot name="variations" v-if="hasVariations">
@@ -65,6 +66,16 @@
               {{ dictionary('select_variation') }}
             </b-alert>
           </slot>
+
+          <p class="ec-product__short-stock">
+            <small v-if="hasVariations && selectedVariationQuantity > 0">
+              {{ dictionary('just') }} <strong>{{ selectedVariationQuantity }}</strong> {{ dictionary('in_stock') }}
+            </small>
+
+            <small v-else-if="!hasVariations && almostOutOfStock > 0">
+              {{ dictionary('just') }} <strong>{{ almostOutOfStock }}</strong> {{ dictionary('in_stock') }}
+            </small>
+          </p>
 
           <div class="ec-product__buy">
             <slot name="buy">
